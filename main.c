@@ -82,6 +82,22 @@ int generateJson() {
     return 0;
 }
 
+int readJsonFile() {
+    
+    char fileName[100];
+    char buf[100]; 
+    // int system(const char *command);
+    printf("choose the json file you want to read (write out the name and extension): \n");
+    system("cd data/ && ls *.json");
+    scanf("%s", fileName);
+
+    snprintf(buf, sizeof(buf), "cat data/%s", fileName);
+    printf("this is the content of the file: \n");
+    system(buf);
+
+    return 0;
+};
+
 int handleUserInput() {
     int opt;
     printf("select what you want to do: \n");
@@ -91,7 +107,7 @@ int handleUserInput() {
             generateJson();
         break;
         case 2:
-            setFilePath();
+            readJsonFile();
         break; 
         default:
         printf("Invalid option, please select one of the available options\n");
@@ -99,6 +115,8 @@ int handleUserInput() {
     }
     return 0;
 }
+
+
 
 
 void menu() {
